@@ -61,8 +61,8 @@ jobs:
           & "$env:ProgramFiles\Tailscale\tailscale.exe" up --authkey=${{ secrets.TAILSCALE_AUTHKEY }} --hostname=workrdp
          
           # Wait for Tailscale to assign an IP
-          $tsIP = $null$retries = 0
-          while (-not $tsIP -and$retries -lt 10) {
+          $tsIP = $null $retries = 0
+          while (-not $tsIP -and $retries -lt 10) {
               $tsIP = & "$env:ProgramFiles\Tailscale\tailscale.exe" ip -4
               Start-Sleep -Seconds 5
               $retries++
